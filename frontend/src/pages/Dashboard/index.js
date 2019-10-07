@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import socketio from 'socket.io-client';
 import api from '../../services/api';
 import './styles.css';
+import { async } from "q";
 
 export default function Dashboard(){
     const [spots, setSpots] = useState([]);
@@ -30,7 +31,19 @@ export default function Dashboard(){
         }
         
         loadSpots();
-    }, []) 
+    }, []);
+
+    async function handleAccept(id){
+        await api.post(`/bookings/${id}/approvals`);
+
+        setRequests(requests.filter(request => request._id !== id));
+    }
+
+    async function handleReject(id){
+        await api.post(`/bookings/${id}/rejections`)   ;
+
+        setRequests(requests.filter(request => request._id !== id));
+    }
 
     return (
         <>
@@ -40,8 +53,8 @@ export default function Dashboard(){
                         <p>
                             <strong>{info.user.email}</strong> está solicitando uma reserva em <strong>{info.spot.company}</strong> para a data: <strong>{info.date}</strong>
                         </p>
-                        <button className="accept">ACEITAR</button>
-                        <button className="reject">REJEITAR</button>
+                        <button onClick={() => handleAccept(info._id)}  className="accept">ACEITAR</button>
+                        <button onClick={() => handleReject(info._id)} className="reject">REJEITAR</button>
                     </li>
                 ))}
             </ul>

@@ -29,6 +29,10 @@ export default function Login({ navigation }) {
 
     }
 
+    function handleScan(){
+        navigation.navigate('Scanner');
+    }
+
     return( 
     <KeyboardAvoidingView behavior='padding' style={styles.conteiner}>
         <Image source={ logo }/>
@@ -58,6 +62,10 @@ export default function Login({ navigation }) {
 
             <TouchableOpacity onPress={handleSubmit} style={styles.button}>
                 <Text style={styles.buttonText}>Encontrar</Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity onPress={handleScan} style={styles.buttonScan}>
+                <Text style={styles.buttonText}>Escanear</Text>
             </TouchableOpacity>
         </View>
 
@@ -102,5 +110,13 @@ const styles = StyleSheet.create({
         color: '#fff',
         fontWeight: 'bold',
         fontSize: 16,
+    },
+    buttonScan:{
+        height: 42,
+        backgroundColor: '#f05a5b',
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderRadius: 2,
+        marginTop: 10,
     }
 });

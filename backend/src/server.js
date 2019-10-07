@@ -11,18 +11,18 @@ const server = http.Server(app);
 const io = socketio(server);
 
 
-// mongoose.connect('mongodb://localhost/Omnistack', {
-//     useNewUrlParser: true,
-//     useUnifiedTopology: true,
-// }, (err) => { 
-//     if(err){
-//         console.log('Erro: ' + err);
-//     }
-// })
-mongoose.connect('mongodb+srv://omnistack:omnistack@omnistack-1l2mm.mongodb.net/omnistack?retryWrites=true&w=majority', {
+mongoose.connect('mongodb://localhost/Omnistack', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
-});
+}, (err) => { 
+    if(err){
+        console.log('Erro: ' + err);
+    }
+})
+// mongoose.connect('mongodb+srv://omnistack:omnistack@omnistack-1l2mm.mongodb.net/omnistack?retryWrites=true&w=majority', {
+//     useNewUrlParser: true,
+//     useUnifiedTopology: true,
+// });
 
 const connectedUsers = {};
 
