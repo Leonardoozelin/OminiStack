@@ -19,10 +19,6 @@ mongoose.connect('mongodb://localhost/Omnistack', {
         console.log('Erro: ' + err);
     }
 })
-// mongoose.connect('mongodb+srv://omnistack:omnistack@omnistack-1l2mm.mongodb.net/omnistack?retryWrites=true&w=majority', {
-//     useNewUrlParser: true,
-//     useUnifiedTopology: true,
-// });
 
 const connectedUsers = {};
 
